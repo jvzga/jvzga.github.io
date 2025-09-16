@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-	</head>
-		<title>Hello world!</title>
 	<head>
-	</body>
-		<p>This is my first HTML page where I am testing all sorts of cool and new things! I will be adding
-		more content as I learn more about HTML development. Stay tuned!
-		</p>
+		<title>Joshua's Website</title>
+	</head>
 	<body>
+		<h1>Joshua's Website</h1>
+		<h2>Welcome to my website!</h2>
+		<p>This is my first HTML page where I am testing all sorts of cool and new things! I will be adding
+		more content as I learn more about HTML. Stay tuned!</p>
+		<p><h4> Today's date and time</h4></p>
+		<div id="clock"></div>
+		<script>
+			function updateClock() {
+				const now = new Date();
+				const time = now.toLocaleTimeString();
+				const date = now.toLocaleDateString();
+				document.getElementById('clock').textContent = `${date} ${time}`;
+			}
+			window.onload = function() {
+				updateClock();
+				setInterval(updateClock, 1000);
+			};
+		</script>
+	</body>
 </html>

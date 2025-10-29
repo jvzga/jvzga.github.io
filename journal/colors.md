@@ -1,6 +1,6 @@
 # Markdown Journal, Color Practice
 
-![100 Pixel Art](../images/Screenshot%202025-10-29%20at%202.54.20%20PM.png)
+![100 Pixel Art](../images/Screenshot%202025-10-29%20at%202.54.20 PM.png)
 ## Hexdecimal Arrays
 ### 0A
 ### 0A

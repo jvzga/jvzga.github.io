@@ -1,9 +1,9 @@
 # Markdown Journal, Color Practice
 ## Refrence Pixel Art Image
-! [Original Image](../images/IMG_6956.heic)
+![Original Image](../images/IMG_6956.heic)
 
 ## Pixel Art Digital Image
-![100 Pixel Art](../images/Screenshot%202025-10-29%20at%202.54.20 PM.png)
+![Digital Pixel Art](../images/Screenshot%202025-10-29%20at%202.54.20 PM.png)
 ## Hexdecimal Arrays
 ### 0A
 ### 0A

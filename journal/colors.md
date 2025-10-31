@@ -1,6 +1,6 @@
 # Markdown Journal, Color Practice
 ## Refrence Pixel Art Image
-![Original Image](../images/IMG_6956.heic)
+![Original Image](../images/Screenshot%202025-10-31%20at%203.16.07 PM.png)
 
 ## Pixel Art Digital Image
 ![Digital Pixel Art](../images/Screenshot%202025-10-29%20at%202.54.20 PM.png)

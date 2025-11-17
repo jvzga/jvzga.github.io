@@ -3,7 +3,7 @@
 
 ## Part 1: Key Exchange
 
-My Key:
+My Key: N/A (Unable to decrypt partner's messages)
 My Partner's Key:
 
 Our initial shared key:
@@ -16,12 +16,12 @@ and the messages that you received.
 
 (If you used something other than the caesar cipher here, describe what you did)
 
-| Encoded Message | Decoded Message | Key |
-| --------------- | --------------- | --- |
-|                 |                 |     |
-|                 |                 |     |
-|                 |                 |     |
-|                 |                 |     |
+|       Encoded Message     |    Decoded Message       | Key |
+| ------------------------- | ------------------------ | --- |
+| st estd td 1 xpddlrp      | hi this is 1 message     | 11 |
+| wg hvwg o 2br asggous?    | is this a 2nd message?   | 14 |
+|                           |                          | 23 |
+|                           |                          | 24 |
 
 
 ## Part 3: Connection to TCP/IP Model

@@ -1,1 +1,21 @@
-placeholder
+table, tr, th ,td{
+    border: 1px solid black;
+}
+body {
+    background-color: lightblue;
+}
+h1 {
+    color: navy;
+    margin-left: 20px;
+} 
+#info{
+    background-color: thistle;
+}
+.hightlight{
+    background-color: yellow;
+}
+#City Zoo{
+    font-weight: bold;
+    color: green;
+    text-decoration:wavy underline;
+}

@@ -8,12 +8,11 @@ body {
 }
 h1 {
     color: navy;
-    margin-left: 20px;
     background-color: lightskyblue; 
+    padding: 10px;
 } 
 p {
     font-size: 16px;
-    margin-left: 40px;
     color: darkblue;
 }
 a {

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Holy Grail Layout Practice</title>
+    <script src="validate.js"></script>
+<style>
+    .grid{
+        display: grid;
+        grid:
+        'head head' 100px
+        'menu main' 1fr
+        'foot foot' 200px
+        /200px 1fr;
+    }
+    #header{
+        grid-area: head;
+        width: 100%;
+        background-color: lightblue;
+        text-align: center;
+        font-size: 24px;
+        color: white;
+    }
+</style>
+
+</head>
+
+
+<body>
+    <div id="layout">
+        <div class="grid">
+            <div id="header">This is the header</div>
+            <div id="menu" style="grid-area: menu; background-color: lightgreen; padding: 10px;">
+                <p>Menu Item 1</p>
+                <p>Menu Item 2</p>
+                <p>Menu Item 3</p>
+            </div>
+            <div id="main" style="grid-area: main; background-color: lightgray; padding: 10px;">
+                <h2>Main Content Area</h2>
+                <p>This is where the main content goes.</p>
+            </div>
+            <div id="footer" style="grid-area: foot; background-color: lightcoral; text-align: center; padding: 20px;">
+                This is the footer
+            </div>
+    </div>
+
+
+
+</body>
+
+</html>

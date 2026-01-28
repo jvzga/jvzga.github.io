@@ -1,9 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <link rel="icon" href="../../images/favicon.ico">
+    <title>Miriam's Bakery</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<p>
+    <h1>Form will open before each Saturday so orders can be placed</h1>
+    <h2>Current Order limit is 2 types per customer to prevent order being unfufilled</h2>
+</p>
+<br>
+<hr>
+<br>
+<form action="https://httpbin.org/post" method="POST">
+    <h2>Bread Order Request</h2>
+
+    <fieldset>
+        <legend>Bread Type 1</legend>
+        <label for="bread_type_1">Select Bread Type:</label>
+        <select id="bread_type_1" name="bread_type_1" required>
+            <option value="">--Select Bread--</option>
+            <option value="Crossiant">Croissant</option>
+            <option value="Sesame Round Bread">Sesame Round Bread</option>
+            <option value="Powder Sugar Bread">Powder Sugar Bread</option>
+            <option value="Concha (Pan Dulce) Bread">Concha (Pan Dulce) Bread</option>
+        </select>
+        <br>
+        <label for="size_1">Select Size:</label>
+        <select id="size_1" name="size_1" required>
+            <option value="">--Select Size--</option>
+            <option value="Small">Small</option>
+            <option value="Large">Large</option>
+        </select>
+        <br>
+        <label for="toppings_1">Select Toppings:</label>
+        <select id="toppings_1" name="toppings_1" required>
+            <option value="">--Select Toppings--</option>
+            <option value="None">None</option>
+            <option value="Sesame Seeds">Sesame Seeds</option>
+            <option value="Powdered Sugar">Powdered Sugar</option>
+            <option value="Sugar Shell/Strips">Sugar Shell/Strips</option>
+        </select>
+    </fieldset>
+
+    <fieldset>
+        <legend>Bread Type 2</legend>
+        <label for="bread_type_2">Select Bread Type:</label>
+        <select id="bread_type_2" name="bread_type_2" required>
+            <option value="">--Select Bread--</option>
+            <option value="Crossiant">Croissant</option>
+            <option value="Sesame Round Bread">Sesame Round Bread</option>
+            <option value="Powder Sugar Bread">Powder Sugar Bread</option>
+            <option value="Concha (Pan Dulce) Bread">Concha (Pan Dulce) Bread</option>
+        </select>
+        <br>
+        <label for="size_2">Select Size:</label>
+        <select id="size_2" name="size_2" required>
+            <option value="">--Select Size--</option>
+            <option value="Small">Small</option>
+            <option value="Large">Large</option>
+        </select>
+        <br>
+        <label for="toppings_2">Select Toppings:</label>
+        <select id="toppings_2" name="toppings_2" required>
+            <option value="">--Select Toppings--</option>
+            <option value="None">None</option>
+            <option value="Sesame Seeds">Sesame Seeds</option>
+            <option value="Powdered Sugar">Powdered Sugar</option>
+            <option value="Sugar Shell/Strips">Sugar Shell/Strips</option>
+        </select>
+    </fieldset>
+
+    <!-- Note to self: probably a better way to do this like with java but 
+     for now this is fine, can reuse the same code but can take take more space -->
+    <button type="submit">Submit Order</button>
+</form>
 
 </body>
 </html>

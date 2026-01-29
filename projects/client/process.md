@@ -28,3 +28,6 @@ Snow storm came in over the weekend and my files did not save properly so I lost
 
 12/27/26
 Finished the majority of order form, took lots of troubleshooting and experimenting to get something looks nice, updated some of the style.css so that the forms looks nice, will probably be finished tomorrow, just need some photos and add some details for home page and gallery. Order form might need a makeover but it works fine, just appearence might need be tinkered with a bit and could be done within a few hours.
+
+12/29/26 
+Finishing and polishing up the entire website with colors and styling to make it appear nice and conforming to WCAG AA standard, will continue to update if it shall require. The Client is very happy with their result, can/will tweak if they desire or to fix some minor details

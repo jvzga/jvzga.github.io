@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My First Canvas</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Here's a canvas</h1>
+    <canvas id="canvas" width="800" height="800">  
+    </canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // background color
+        ctx.fillStyle = "lightblue";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // wide ellipise
+        ctx.fillStyle = "purple";
+        ctx.strokeStyle = "orange";
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.ellipse(400, 400 // x,y
+        , 150 , 350 // major and minor axis
+        , -Math.PI/6 // rotation
+        , 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // draw a rectangle
+        ctx.fillStyle = "green";
+        ctx.fillRect(100, 100, 200, 300);
+
+        // draw a rectangle two
+        ctx.fillStyle = "red";
+        ctx.fillRect(400,100, 150, 150);
+
+        // draw a circle
+        ctx.fillStyle = "yellow";
+        ctx.beginPath();
+        ctx.arc(600, 500, 75, 0, Math.PI * 2);
+        ctx.fill();
+
+        // triangle
+        ctx.beginPath();
+        ctx.moveTo(200, 500);
+        ctx.lineTo(300, 700);
+        ctx.lineTo(100, 700);
+        ctx.closePath();
+        ctx.fillStyle = "cyan";
+        ctx.fill();
+    </script>
+</body>
+</html>

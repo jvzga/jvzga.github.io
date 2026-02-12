@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Portrait</title>
+    <title>Self Portrait</title>
     <style>
         canvas {
             border: 1px solid black;
@@ -10,7 +10,6 @@
             margin-left: auto;
             margin-right: auto;
             margin: 0 auto;
-            
         }
         h1 {
             text-align: center;
@@ -25,6 +24,71 @@
     <script>
         const canvas = document.getElementById('canvas'); 
         const ctx = canvas.getContext('2d');
+        
+        //hair 
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.ellipse(400, 250, 175, 100, 0, 0, Math.PI * 2);
+        ctx.fill();
+       
+        // head
+        ctx.fillStyle = "tan";
+        ctx.beginPath();
+        ctx.ellipse(400, 400, 175, 200, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // eyes
+        ctx.fillStyle = "white";
+        // left eye white
+        ctx.beginPath();
+        ctx.ellipse(325, 350, 40, 25, 0, 0, Math.PI * 2);
+        ctx.fill();
+        // right eye white
+        ctx.beginPath();
+        ctx.ellipse(475, 350, 40, 25, 0, 0, Math.PI * 2);
+        ctx.fill();
+        // left eye iris
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.ellipse(325, 350, 15, 15, 0, 0, Math.PI * 2);
+        ctx.fill();
+        // right eye pupil
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.ellipse(475, 350, 15, 15, 0, 0, Math.PI * 2);
+        ctx.fill();
+        // left eye iris
+        ctx.fillStyle = "#381515";
+        ctx.beginPath();
+        ctx.ellipse(325, 350, 10, 10, 0, 0, Math.PI * 2);
+        ctx.fill();
+        // right eye iris
+        ctx.fillStyle = "#381515";
+        ctx.beginPath();
+        ctx.ellipse(475, 350, 10, 10, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // nose
+        ctx.fillStyle = "#c9b17b";
+        ctx.beginPath();
+        ctx.moveTo(400, 400);
+        ctx.lineTo(375, 450);
+        ctx.lineTo(425, 450);
+        ctx.closePath();
+        ctx.fill();
+
+        // mouth
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.ellipse(400, 500, 50, 25, 0, 0, Math.PI);
+        ctx.fill();
+
+        
+
+
+
+
+
     </script>
 </body>        
 </html>

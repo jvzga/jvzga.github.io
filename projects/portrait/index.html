@@ -25,16 +25,31 @@
         const canvas = document.getElementById('canvas'); 
         const ctx = canvas.getContext('2d');
         
-        //hair 
+       //hair 
         ctx.fillStyle = "black";
         ctx.beginPath();
         ctx.ellipse(400, 250, 175, 100, 0, 0, Math.PI * 2);
         ctx.fill();
-       
+        // side hair
+        ctx.fillStyle = "black";
+        // left side hair
+        ctx.beginPath();
+        ctx.ellipse(250, 400, 50, 100, 0, 0, Math.PI * 2);
+        ctx.fill();
+        // right side hair
+        ctx.beginPath();
+        ctx.ellipse(550, 400, 50, 100, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
         // head
         ctx.fillStyle = "tan";
         ctx.beginPath();
         ctx.ellipse(400, 400, 175, 200, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        //neck
+        ctx.fillStyle = "tan";
+        ctx.fillRect(350, 550, 100, 150);
         ctx.fill();
 
         // eyes
@@ -82,6 +97,31 @@
         ctx.beginPath();
         ctx.ellipse(400, 500, 50, 25, 0, 0, Math.PI);
         ctx.fill();
+
+        // ears
+        ctx.fillStyle = "tan";
+        // left ear
+        ctx.beginPath();
+        ctx.ellipse(225, 400, 25, 50, 0, 0, Math.PI * 2);
+        ctx.fill();
+        // right ear
+        ctx.beginPath();
+        ctx.ellipse(575, 400, 25, 50, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // eyebrows
+        ctx.fillStyle = "black";
+        // left eyebrow
+        ctx.beginPath();
+        ctx.ellipse(325, 300, 40, 10, -0.5, 0, Math.PI * 2);
+        ctx.fill();
+        // right eyebrow
+        ctx.beginPath();
+        ctx.ellipse(475, 300, 40, 10, 0.5, 0, Math.PI * 2);
+        ctx.fill();
+
+       
+
 
         
 

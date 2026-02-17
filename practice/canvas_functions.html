@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Canvas Functions</title>
+    </head>
+    <body>
+        <h1>Heres some canvas functions</h1>
+        <canvas width="800" height="800" id="myCanvas"></canvas>
+
+        <script>
+            const canvas = document.getElementById("myCanvas");
+            const ctx = canvas.getContext("2d");
+            ctx.fillRect(100, 100, 500, 500);
+
+            function fillColoredRect(x, y, width, height, color) {
+                ctx.fillStyle = color;
+                ctx.fillRect(x, y, width, height);
+            }
+    
+             function fillColoredCircle(x, y, radius, color) {
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+    
+            fillColoredCircle(200, 200, 50, "red");
+            fillColoredCircle(400, 400, 75, "blue");
+            fillColoredRect(300, 300, 100, 150, "green");
+        </script>
+
+    </body>
+</html>

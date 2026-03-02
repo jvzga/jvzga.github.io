@@ -22,7 +22,7 @@
             return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
         }
 
-        // initialize 8 blocks with random angles, sizes, and colors
+        // makes 25 blocks with random positions, sizes, and colors
         for (let i = 0; i < 25; i++) {
             blocks.push({
                 angle: Math.random() * Math.PI * 2,

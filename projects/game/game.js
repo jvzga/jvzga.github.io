@@ -6,20 +6,29 @@ let gameActive = true; //this variable is required.
 
 //If you need, add any "helper" functions here
 
+function handleInvalidInput() {
+    print("\nInvalid input. Please try again.");
+}
+
 
 //Make one function for each location
 function locationA() {
     clear();
-    print("\nYou are in location A!");
-    print("\nWhere do you want to go next? Say one of these choices:" +
-        "\n\tlocationB");
+    print("\nYou just woke up and its 7am, school starts at 8:20am.");
+    print("\nWhat do you want to do? Say one of these choices:" +
+        "\n\tstay in bed" +
+        "\n\tget up");
     
     function processInput(input){
-        if (input.toLowerCase() === "locationb") {
+        if (input.toLowerCase() === "stay in bed") {
             locationB();
+        } else if (input.toLowerCase() === "get up") {
+            print("\nYou got up and changed, what do you want to do next?" +
+                "\n\tmake breakfast" +
+                "\n\tready your backpack");
+            gameActive = false;
         } else {
-            stayHere();
-            waitThenCall(locationA);
+            handleInvalidInput();
         }
     }
     waitForInput(processInput);
@@ -27,15 +36,19 @@ function locationA() {
 
 function locationB() {
     clear();
-    print("\nYou are in location B!");
-    print("\nWhere do you want to go next? Say one of these choices:" +
-        "\n\tlocationA");
-    
-    function processInput(input){
-        if (input.toLowerCase() === "locationa") {
+    print("\nYou snoozed the alarm for 7 more minutes");
+    print("\nWhat do you want to do? Say one of these choices:" +
+        "\n\tget up" +
+        "\n\tsnooze 7 more minutes");
+
+    function processInput(input) {
+        if (input.toLowerCase() === "get up") {
             locationA();
+        } else if (input.toLowerCase() === "snooze 7 more minutes") {
+            handleInvalidInput();
+            waitThenCall(locationB);
         } else {
-            stayHere();
+            handleInvalidInput();
             waitThenCall(locationB);
         }
     }

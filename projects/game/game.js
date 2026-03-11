@@ -54,6 +54,24 @@ function locationB() {
     }
     waitForInput(processInput);
 }
+function locationC() {
+    clear();
+    print("\nYou are in the kitchen, its time for breakfast");
+    print("\nWhat do you want to do next?:" +
+        "\n\tprepare breakfast" +
+        "\n\tprepare backpack");
+    
+    function processInput(input) {
+        if (input.toLowerCase() === "prepare breakfast") {
+            // Handle breakfast preparation
+        } else if (input.toLowerCase() === "prepare backpack") {
+            // Handle backpack preparation
+        } else {
+            handleInvalidInput();
+        }
+    }
+    waitForInput(processInput);
+}
 
 //finally, make sure you customize this to tell it what should happen at the
 //very start. For this simple example, any input will bring you

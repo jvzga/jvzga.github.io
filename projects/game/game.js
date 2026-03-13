@@ -10,7 +10,6 @@ function handleInvalidInput() {
     print("\nInvalid input. Please try again.");
 }
 
-
 //Make one function for each location
 function locationA() {
     clear();
@@ -54,20 +53,22 @@ function locationB() {
     }
     waitForInput(processInput);
 }
+
 function locationC() {
     clear();
     print("\nYou are in the kitchen, its time for breakfast");
     print("\nWhat do you want to do next?:" +
-        "\n\tprepare breakfast" +
+        "\n\teat breakfast" +
         "\n\tprepare backpack");
     
     function processInput(input) {
-        if (input.toLowerCase() === "prepare breakfast") {
-            // Handle breakfast preparation
+        if (input.toLowerCase() === "eat breakfast") {
         } else if (input.toLowerCase() === "prepare backpack") {
-            // Handle backpack preparation
+            handleInvalidInput();
+            waitThenCall(locationC);
         } else {
             handleInvalidInput();
+            waitThenCall(locationC);
         }
     }
     waitForInput(processInput);

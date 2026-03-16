@@ -2,51 +2,53 @@
 
 ## Setting
 
-This game takes place at home where you have to get ready for school, there are some random chance events that I have included which are: carpool, no e-scooter, walking, or bus stop, that provide different ways on how to arrive to school
+This game takes place at home where you have to get ready for school. You start in your bedroom at 7:00 AM and must arrive at school by 8:20 AM. Along the way, you can prepare your backpack, eat breakfast, and get dressed. There are random transportation events (neighbor ride, bus, Lime Scooter) that can help you get to school faster, but you always have the option to walk.
 
 ## Map
 
 ```mermaid
 graph TD;
-    bus(((Bus)))-->Commons;
-    Library-->Commons;
-    Box-->Cafeteria;
-    Cafeteria-->Commons;
-    Commons-->Outside;
-    Outside-->Portable;
-    Portable-->rm511;
-    Portable-->Bathroom;
+    Bedroom --> BedroomSnooze;
+    Bedroom --> Apartment;
+    BedroomSnooze --> Apartment;
+    Apartment --> Kitchen;
+    Apartment --> OutsideStreet;
+    Kitchen --> Apartment;
+    OutsideStreet --> GoToSchool;
+    OutsideStreet --> Apartment;
+    GoToSchool --> School;
+    
+    classDef timeCheck fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef requirement fill:#bbf,stroke:#333,stroke-width:2px;
+    
+    OutsideStreet:::requirement;
+    GoToSchool:::timeCheck;
 ```
 
-The player at home and they must get ready to go to school
-They can explore their surrondings and do activites, but must eventually make their way to Wakefield by 8:20
-each actions takes a certain amount of minutes depending what type of action it is, like eating, getting dressed,
-getting to school, and getting your stuff ready.
+**Legend:**
+- **Blue nodes**: Locations where you must meet requirements (backpack, breakfast, dressed)
+- **Pink nodes**: Time-critical decisions that can end the game if you're late
 
 ## Story
 
-When the user wakes up they are at home and still in bed.
-Its 7am and its probably too early to get up so you can snooze for an extra 7 minutes each time the alarm goes off, 
-but be warned! Don't oversleep as some actions take most of your time like getting to school, eating breakfast and getting your backpack ready.
+When you wake up in your bedroom at 7:00 AM, school starts at 8:20 AM. You can snooze the alarm for 7 more minutes each time, but be careful not to oversleep! You need to prepare your backpack, eat breakfast, and get dressed before you can leave for school.
 
-The game starts 1 hour and 20 minutes before the morning class bell, and each
-move costs 1 minute while some actions take 5-10 minutes, like getting dressed or eating breakfast. So this journey must be completed by 8:20am.
-Some moves like snoozing the alarm for extra sleep take up more minutes
+From your bedroom, you can get up to go to the apartment, where you have access to the kitchen and the outside street. In the kitchen, you can eat breakfast or prepare your backpack. Back in the apartment, you can prepare your backpack if you haven't already, or head to the outside street once you're ready.
+
+Once outside, you choose how to get to school. Walking takes 15 minutes but is always available. Random events may offer faster transportation options like a neighbor's ride (8 minutes), taking the bus (10 minutes), or using a Lime Scooter (5 minutes).
+
+Each action takes time, so manage your morning carefully to arrive at school on time!
 
 ## Global Variables
 
-The most important variables are
-`haveBackpack` and `ateBreakfast`, both
-booleans that track progress in the
-story. Depending on these two variables,
-some rooms will display different things. For example, if you try
-to leave home without either of these 2 varibles done beforehand, you would not be able to leave
+The most important variables are:
+- `BackpackReady`, `BreakfastAte`, `getDressed`: Booleans that track if you've completed the necessary preparations
+- `currentTime`: Numeric variable tracking minutes since 7:00 AM (starts at 420, school deadline at 500)
+- `gameActive`: Boolean controlling if the game is still running
 
-I also have numeric variables called `day` and `minute` which keep track of 
-time. `minute` starts at 0 and counts up
-with each move.
+Time advances with each action:
+- Small actions: 2-5 minutes (moving between rooms, preparing backpack)
+- Medium actions: 7-10 minutes (eating breakfast, getting dressed, transportation)
+- Large actions: 15 minutes (walking to school)
 
-I have a little HUD map, and use a bunch of 
-boolean variables to control which
-rooms the player has discovered. A map is only displayed after the user
-visits it.
+The game ends if you arrive at school after 8:20 AM or if time runs out during any location.

@@ -32,6 +32,14 @@ function lateForSchool() {
     gameActive = false;
 }
 
+function getRandomEvent() {
+    let rand = Math.random();
+    if (rand < 0.3) return "neighbor";
+    if (rand < 0.6) return "bus";
+    if (rand < 0.9) return "Lime Scooter";
+    return "none";
+}
+
 function handleInvalidInput() {
     print("\nInvalid input. Please try again.");
 }
@@ -45,17 +53,26 @@ function bedroom() {
     print("\nWhat do you want to do? Say one of these choices:" +
         "\n\tstay in bed" +
         "\n\tget up" +
-        "\n\tprepare backpack");
+        "\n\tprepare backpack")
+        "\n\t get dressed";
     
     function processInput(input){
         if (input.toLowerCase() === "stay in bed") {
             bedroomSnooze();
+            currentTime += 7;
+            print("\nYou stayed in bed and snoozed the alarm for 7 more minutes.");
+            print("Time is now: " + getTimeString());
         } else if (input.toLowerCase() === "get up") {
             apartment();
         } else if (input.toLowerCase() === "prepare backpack") {
             BackpackReady = true;
             currentTime += 5;
             print("\nYou prepared your backpack.");
+            print("Time is now: " + getTimeString());
+            waitThenCall(bedroom); 
+        } else if (input.toLowerCase() === "get dressed") {
+            currentTime += 10;
+            print("\nYou got dressed.");
             print("Time is now: " + getTimeString());
             waitThenCall(bedroom);
         } else {
@@ -167,7 +184,20 @@ function outsideStreet() {
     
     function processInput(input){
         if (input.toLowerCase() === "go to school") {
-            currentTime += 10;
+            let event = getRandomEvent();
+            if (event === "neighbor") {
+                print("\nA neighbor offers you a ride! You arrive faster.");
+                currentTime += 5;
+            } else if (event === "bus") {
+                print("\nThe ART 75 bus will arrive soon,You take it and arrive faster.");
+                currentTime += 7;
+            } else {
+                currentTime += 10;
+            }
+            if (event === "Lime Scooter") {
+                print("\nYou find a Lime Scooter nearby and decide to take it. You arrive faster.");
+                currentTime += 6;
+            }
             school();
         } else if (input.toLowerCase() === "go back to apartment") {
             currentTime += 5;

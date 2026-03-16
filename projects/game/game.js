@@ -3,29 +3,61 @@ let gameActive = true; //this variable is required.
 
 //Declare your other global variables here
 
+let BackpackReady = false;
+let BreakfastAte = false;
+let currentTime = 420; // 7:00 am in minutes (7 * 60)
 
 //If you need, add any "helper" functions here
+
+function getTimeString() {
+    let hours = Math.floor(currentTime / 60);
+    let minutes = currentTime % 60;
+    let meridiem = hours >= 12 ? "pm" : "am";
+    if (hours > 12) hours -= 12;
+    return hours + ":" + (minutes < 10 ? "0" : "") + minutes + " " + meridiem;
+}
+
+function checkTime() {
+    if (currentTime >= 500) { // 8:20 am in minutes (8 * 60 + 20)
+        lateForSchool();
+        return true;
+    }
+    return false;
+}
+
+function lateForSchool() {
+    clear();
+    print("\nOh no! You missed the deadline! It's now " + getTimeString() + " and school started at 8:20 am.");
+    print("\nGame Over!");
+    gameActive = false;
+}
 
 function handleInvalidInput() {
     print("\nInvalid input. Please try again.");
 }
 
 //Make one function for each location
-function locationA() {
+function bedroom() {
+    if (checkTime()) return;
     clear();
     print("\nYou just woke up and its 7am, school starts at 8:20am.");
+    print("\nCurrent time: " + getTimeString());
     print("\nWhat do you want to do? Say one of these choices:" +
         "\n\tstay in bed" +
-        "\n\tget up");
+        "\n\tget up" +
+        "\n\tprepare backpack");
     
     function processInput(input){
         if (input.toLowerCase() === "stay in bed") {
-            locationB();
+            bedroomSnooze();
         } else if (input.toLowerCase() === "get up") {
-            print("\nYou got up and changed, what do you want to do next?" +
-                "\n\tmake breakfast" +
-                "\n\tready your backpack");
-            gameActive = false;
+            apartment();
+        } else if (input.toLowerCase() === "prepare backpack") {
+            BackpackReady = true;
+            currentTime += 5;
+            print("\nYou prepared your backpack.");
+            print("Time is now: " + getTimeString());
+            waitThenCall(bedroom);
         } else {
             handleInvalidInput();
         }
@@ -33,45 +65,130 @@ function locationA() {
     waitForInput(processInput);
 }
 
-function locationB() {
+function bedroomSnooze() {
+    if (checkTime()) return;
     clear();
     print("\nYou snoozed the alarm for 7 more minutes");
+    print("\nCurrent time: " + getTimeString());
     print("\nWhat do you want to do? Say one of these choices:" +
         "\n\tget up" +
         "\n\tsnooze 7 more minutes");
 
     function processInput(input) {
         if (input.toLowerCase() === "get up") {
-            locationA();
+            currentTime += 3;
+            apartment();
         } else if (input.toLowerCase() === "snooze 7 more minutes") {
-            handleInvalidInput();
-            waitThenCall(locationB);
+            currentTime += 7;
+            print("\nYou snoozed. Time is now: " + getTimeString());
+            waitThenCall(bedroomSnooze);
         } else {
             handleInvalidInput();
-            waitThenCall(locationB);
+            waitThenCall(bedroomSnooze);
         }
     }
     waitForInput(processInput);
 }
 
-function locationC() {
+function kitchen() {
+    if (checkTime()) return;
     clear();
     print("\nYou are in the kitchen, its time for breakfast");
+    print("\nCurrent time: " + getTimeString());
     print("\nWhat do you want to do next?:" +
         "\n\teat breakfast" +
         "\n\tprepare backpack");
     
     function processInput(input) {
         if (input.toLowerCase() === "eat breakfast") {
+            BreakfastAte = true;
+            currentTime += 10;
+            print("\nYou ate breakfast.");
+            print("Time is now: " + getTimeString());
+            apartment();
         } else if (input.toLowerCase() === "prepare backpack") {
-            handleInvalidInput();
-            waitThenCall(locationC);
+            BackpackReady = true;
+            currentTime += 5;
+            print("\nYou prepared your backpack.");
+            print("Time is now: " + getTimeString());
+            apartment();
         } else {
             handleInvalidInput();
-            waitThenCall(locationC);
+            waitThenCall(kitchen);
         }
     }
     waitForInput(processInput);
+}
+
+function apartment() {
+    if (checkTime()) return;
+    clear();
+    print("\nYou are in the apartment. What do you want to do?");
+    print("\nCurrent time: " + getTimeString());
+    print("\nOptions:" +
+        "\n\tgo to kitchen" +
+        "\n\tprepare backpack" +
+        "\n\tgo to outside street");
+    
+    function processInput(input){
+        if (input.toLowerCase() === "go to kitchen") {
+            currentTime += 2;
+            kitchen();
+        } else if (input.toLowerCase() === "prepare backpack") {
+            BackpackReady = true;
+            currentTime += 5;
+            print("\nYou prepared your backpack.");
+            print("Time is now: " + getTimeString());
+            waitThenCall(apartment);
+        } else if (input.toLowerCase() === "go to outside street") {
+            if (BackpackReady && BreakfastAte) {
+                currentTime += 5;
+                outsideStreet();
+            } else {
+                print("\nYou need to prepare your backpack and eat breakfast first.");
+                waitThenCall(apartment);
+            }
+        } else {
+            handleInvalidInput();
+            waitThenCall(apartment);
+        }
+    }
+    waitForInput(processInput);
+}
+
+function outsideStreet() {
+    if (checkTime()) return;
+    clear();
+    print("\nYou are on the outside street. What do you want to do?");
+    print("\nCurrent time: " + getTimeString());
+    print("\nOptions:" +
+        "\n\tgo to school" +
+        "\n\tgo back to apartment");
+    
+    function processInput(input){
+        if (input.toLowerCase() === "go to school") {
+            currentTime += 10;
+            school();
+        } else if (input.toLowerCase() === "go back to apartment") {
+            currentTime += 5;
+            apartment();
+        } else {
+            handleInvalidInput();
+            waitThenCall(outsideStreet);
+        }
+    }
+    waitForInput(processInput);
+}
+
+function school() {
+    clear();
+    print("\nYou arrived at school at " + getTimeString() + ".");
+    if (currentTime <= 500) {
+        print("You made it on time! Game over!");
+    } else {
+        print("Unfortunately, you're late! School started at 8:20 am.");
+    }
+    gameActive = false;
 }
 
 //finally, make sure you customize this to tell it what should happen at the
@@ -81,7 +198,7 @@ function start(){
     print("Welcome to my game! Press any key to start");
 
     function processInput(input){
-            locationA();
+            bedroom();
     }
     waitForInput(processInput);
 }

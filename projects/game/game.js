@@ -228,16 +228,16 @@ function goToSchool() {
     print("\n Current time: " + getTimeString());
     
     let event = getRandomEvent();
-    let options = "\n Options:" + "\n\t walk";
+    let options = "\n Options:" + "\n\t walk (15 minutes)";
     
     if (event === "neighbor") {
-        options += "\n\t neighbor ride";
+        options += "\n\t neighbor ride (8 minutes) - A neighbor offers you a ride!";
     }
     if (event === "bus") {
-        options += "\n\t take bus";
+        options += "\n\t take bus (10 minutes) - The ART 75 bus will arrive soon.";
     }
     if (event === "Lime Scooter") {
-        options += "\n\t use lime scooter";
+        options += "\n\t use lime scooter (5 minutes) - You find a Lime Scooter nearby.";
     }
     
     print(options);
@@ -249,15 +249,15 @@ function goToSchool() {
             print("Time is now: " + getTimeString());
             school();
         } else if (input.toLowerCase() === "neighbor ride" && event === "neighbor") {
-            print("\nA neighbor offers you a ride! You arrive faster.");
+            print("\nYou take the neighbor's ride and arrive faster.");
             currentTime += 8;
             school();
         } else if (input.toLowerCase() === "take bus" && event === "bus") {
-            print("\nThe ART 75 bus will arrive soon. You take it and arrive faster.");
+            print("\nYou take the bus and arrive faster.");
             currentTime += 10;
             school();
         } else if (input.toLowerCase() === "use lime scooter" && event === "Lime Scooter") {
-            print("\nYou find a Lime Scooter nearby and decide to take it. You arrive faster with the neighborhood shortcuts.");
+            print("\nYou use the Lime Scooter and arrive faster with the neighborhood shortcuts.");
             currentTime += 5;
             school();
         } else {

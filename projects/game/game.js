@@ -52,10 +52,10 @@ function bedroom() {
     print("\nYou just woke up and its 7am, school starts at 8:20am.");
     print("\nCurrent time: " + getTimeString());
     print("\nWhat do you want to do? Say one of these choices:" +
-        "\n\tstay in bed" +
-        "\n\tget up" +
-        "\n\tprepare backpack")
-        "\n\t get dressed";
+        "\n\t stay in bed" +
+        "\n\t get up" +
+        "\n\t prepare backpack" +
+        "\n\t get dressed");
     
     function processInput(input){
         if (input.toLowerCase() === "stay in bed") {
@@ -87,11 +87,11 @@ function bedroom() {
 function bedroomSnooze() {
     if (checkTime()) return;
     clear();
-    print("\nYou snoozed the alarm for 7 more minutes");
-    print("\nCurrent time: " + getTimeString());
-    print("\nWhat do you want to do? Say one of these choices:" +
-        "\n\tget up" +
-        "\n\tsnooze 7 more minutes");
+    print("\n You snoozed the alarm for 7 more minutes");
+    print("\n Current time: " + getTimeString());
+    print("\n What do you want to do? Say one of these choices:" +
+        "\n\t get up" +
+        "\n\t snooze 7 more minutes");
 
     function processInput(input) {
         if (input.toLowerCase() === "get up") {
@@ -112,11 +112,11 @@ function bedroomSnooze() {
 function kitchen() {
     if (checkTime()) return;
     clear();
-    print("\nYou are in the kitchen, its time for breakfast");
-    print("\nCurrent time: " + getTimeString());
-    print("\nWhat do you want to do next?:" +
-        "\n\teat breakfast" +
-        "\n\tprepare backpack");
+    print("\n You are in the kitchen, its time for breakfast");
+    print("\n Current time: " + getTimeString());
+    print("\n What do you want to do next?:" +
+        "\n\t eat breakfast" +
+        "\n\t prepare backpack");
     
     function processInput(input) {
         if (input.toLowerCase() === "eat breakfast") {
@@ -142,12 +142,12 @@ function kitchen() {
 function apartment() {
     if (checkTime()) return;
     clear();
-    print("\nYou are in the apartment. What do you want to do?");
-    print("\nCurrent time: " + getTimeString());
-    print("\nOptions:" +
-        "\n\tgo to kitchen" +
-        "\n\tprepare backpack" +
-        "\n\tgo to outside street");
+    print("\n You are in the apartment. What do you want to do?");
+    print("\n Current time: " + getTimeString());
+    print("\n Options:" +
+        "\n\t go to kitchen" +
+        "\n\t prepare backpack" +
+        "\n\t go to outside street");
     
     function processInput(input){
         if (input.toLowerCase() === "go to kitchen") {
@@ -178,11 +178,11 @@ function apartment() {
 function outsideStreet() {
     if (checkTime()) return;
     clear();
-    print("\nYou are on the outside street. What do you want to do?");
-    print("\nCurrent time: " + getTimeString());
-    print("\nOptions:" +
-        "\n\tgo to school" +
-        "\n\tgo back to apartment");
+    print("\n You are on the outside street. What do you want to do?");
+    print("\n Current time: " + getTimeString());
+    print("\n Options:" +
+        "\n\t go to school" +
+        "\n\t go back to apartment");
     
     function processInput(input){
         if (input.toLowerCase() === "go to school") {
@@ -219,7 +219,7 @@ function outsideStreet() {
 
 function school() {
     clear();
-    print("\nYou arrived at school at " + getTimeString() + ".");
+    print("\n You arrived at school at " + getTimeString() + ".");
     if (currentTime <= 500) {
         print("You made it on time! Game over!");
     } else {

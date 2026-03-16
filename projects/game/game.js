@@ -6,6 +6,7 @@ let gameActive = true; //this variable is required.
 let BackpackReady = false;
 let BreakfastAte = false;
 let currentTime = 420; // 7:00 am in minutes (7 * 60)
+let getDressed = false;
 
 //If you need, add any "helper" functions here
 
@@ -71,6 +72,7 @@ function bedroom() {
             print("Time is now: " + getTimeString());
             waitThenCall(bedroom); 
         } else if (input.toLowerCase() === "get dressed") {
+            getDressed = true;
             currentTime += 10;
             print("\nYou got dressed.");
             print("Time is now: " + getTimeString());
@@ -189,7 +191,7 @@ function outsideStreet() {
                 print("\nA neighbor offers you a ride! You arrive faster.");
                 currentTime += 5;
             } else if (event === "bus") {
-                print("\nThe ART 75 bus will arrive soon,You take it and arrive faster.");
+                print("\nThe ART 75 bus will arrive soon, You take it and arrive faster.");
                 currentTime += 7;
             } else {
                 currentTime += 10;
@@ -202,6 +204,11 @@ function outsideStreet() {
         } else if (input.toLowerCase() === "go back to apartment") {
             currentTime += 5;
             apartment();
+        } else if (input.toLowerCase() === "walk to school") {
+            currentTime += 15;
+            print("\nYou decide to walk to school. It takes longer but you get some exercise.");
+            print("Time is now: " + getTimeString());
+            school();
         } else {
             handleInvalidInput();
             waitThenCall(outsideStreet);

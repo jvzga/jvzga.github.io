@@ -63,6 +63,7 @@ function bedroom() {
             currentTime += 7;
             print("\nYou stayed in bed and snoozed the alarm for 7 more minutes.");
             print("Time is now: " + getTimeString());
+            waitThenCall(bedroomSnooze);
         } else if (input.toLowerCase() === "get up") {
             apartment();
         } else if (input.toLowerCase() === "prepare backpack") {
@@ -147,7 +148,8 @@ function apartment() {
     print("\n Options:" +
         "\n\t go to kitchen" +
         "\n\t prepare backpack" +
-        "\n\t go to outside street");
+        "\n\t go to outside street" +
+        "\n\t return to bedroom");
     
     function processInput(input){
         if (input.toLowerCase() === "go to kitchen") {
@@ -156,15 +158,36 @@ function apartment() {
         } else if (input.toLowerCase() === "prepare backpack") {
             BackpackReady = true;
             currentTime += 5;
-            print("\nYou prepared your backpack.");
+            print("\n You prepared your backpack.");
             print("Time is now: " + getTimeString());
             waitThenCall(apartment);
+        } else if (input.toLowerCase() === "return to bedroom") {
+            currentTime += 5;
+            bedroom();
         } else if (input.toLowerCase() === "go to outside street") {
-            if (BackpackReady && BreakfastAte) {
+            if (BackpackReady && BreakfastAte && getDressed) {
                 currentTime += 5;
                 outsideStreet();
             } else {
-                print("\nYou need to prepare your backpack and eat breakfast first.");
+                let completed = [];
+                let notCompleted = [];
+                
+                if (BackpackReady) completed.push("prepared your backpack");
+                else notCompleted.push("prepare your backpack");
+                
+                if (BreakfastAte) completed.push("eaten breakfast");
+                else notCompleted.push("eat breakfast");
+                
+                if (getDressed) completed.push("gotten dressed");
+                else notCompleted.push("get dressed");
+                
+                let message = "\n";
+                if (completed.length > 0) {
+                    message += "You have already " + completed.join(" and ") + " but you still need to " + notCompleted.join(" and ") + ".";
+                } else {
+                    message += "You need to " + notCompleted.join(", ") + ".";
+                }
+                print(message);
                 waitThenCall(apartment);
             }
         } else {
@@ -178,7 +201,7 @@ function apartment() {
 function outsideStreet() {
     if (checkTime()) return;
     clear();
-    print("\n You are on the outside street. What do you want to do?");
+    print("\n You are outside on the street. What do you want to do?");
     print("\n Current time: " + getTimeString());
     print("\n Options:" +
         "\n\t go to school" +
@@ -186,32 +209,60 @@ function outsideStreet() {
     
     function processInput(input){
         if (input.toLowerCase() === "go to school") {
-            let event = getRandomEvent();
-            if (event === "neighbor") {
-                print("\nA neighbor offers you a ride! You arrive faster.");
-                currentTime += 5;
-            } else if (event === "bus") {
-                print("\nThe ART 75 bus will arrive soon, You take it and arrive faster.");
-                currentTime += 7;
-            } else {
-                currentTime += 10;
-            }
-            if (event === "Lime Scooter") {
-                print("\nYou find a Lime Scooter nearby and decide to take it. You arrive faster.");
-                currentTime += 6;
-            }
-            school();
+            goToSchool();
         } else if (input.toLowerCase() === "go back to apartment") {
             currentTime += 5;
             apartment();
-        } else if (input.toLowerCase() === "walk to school") {
+        } else {
+            handleInvalidInput();
+            waitThenCall(outsideStreet);
+        }
+    }
+    waitForInput(processInput);
+}
+
+function goToSchool() {
+    if (checkTime()) return;
+    clear();
+    print("\n How would you like to get to school?");
+    print("\n Current time: " + getTimeString());
+    
+    let event = getRandomEvent();
+    let options = "\n Options:" + "\n\t walk";
+    
+    if (event === "neighbor") {
+        options += "\n\t neighbor ride";
+    }
+    if (event === "bus") {
+        options += "\n\t take bus";
+    }
+    if (event === "Lime Scooter") {
+        options += "\n\t use lime scooter";
+    }
+    
+    print(options);
+    
+    function processInput(input) {
+        if (input.toLowerCase() === "walk") {
             currentTime += 15;
             print("\nYou decide to walk to school. It takes longer but you get some exercise.");
             print("Time is now: " + getTimeString());
             school();
+        } else if (input.toLowerCase() === "neighbor ride" && event === "neighbor") {
+            print("\nA neighbor offers you a ride! You arrive faster.");
+            currentTime += 8;
+            school();
+        } else if (input.toLowerCase() === "take bus" && event === "bus") {
+            print("\nThe ART 75 bus will arrive soon. You take it and arrive faster.");
+            currentTime += 10;
+            school();
+        } else if (input.toLowerCase() === "use lime scooter" && event === "Lime Scooter") {
+            print("\nYou find a Lime Scooter nearby and decide to take it. You arrive faster with the neighborhood shortcuts.");
+            currentTime += 5;
+            school();
         } else {
             handleInvalidInput();
-            waitThenCall(outsideStreet);
+            waitThenCall(goToSchool);
         }
     }
     waitForInput(processInput);

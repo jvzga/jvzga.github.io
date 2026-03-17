@@ -5,11 +5,13 @@ let x = 0;
 let vx =1;
 let y = 0;
 let vy = 1;
+let gravity = 1; 
 
 function move() {
     ctx.clearRect(0, 0, 800, 800);
     x = x + vx;
     y = y + vy;
+    vy = vy + gravity;
     if (x > 750 || x < 0) {
         vx = vx * -1;
     }
@@ -20,3 +22,10 @@ function move() {
     requestAnimationFrame(move);
 }
 move();
+
+//event handler
+function handleKeyDown(e) {
+    console.log(e.key);
+
+//event listener
+document.addEventListener('keydown', handleKeyDown); }

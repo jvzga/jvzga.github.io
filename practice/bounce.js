@@ -26,6 +26,18 @@ move();
 //event handler
 function handleKeyDown(e) {
     console.log(e.key);
+    if (e.key === "ArrowUp") {
+        vy = vy - 10;
+    }
+    if (e.key === "ArrowDown") {
+        vy = vy + 10;
+    }
+    if (e.key === "ArrowLeft") {
+        vx = vx - 10;
+    }
+    if (e.key === "ArrowRight") {
+        vx = vx + 10;
+}
 
 //event listener
 document.addEventListener('keydown', handleKeyDown); }

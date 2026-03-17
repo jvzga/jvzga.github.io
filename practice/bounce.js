@@ -29,13 +29,13 @@ function handleKeyDown(e) {
     if (e.key === "ArrowUp") {
         vy = vy - 10;
     }
-    if (e.key === "ArrowDown") {
+    else if (e.key === "ArrowDown") {
         vy = vy + 10;
     }
-    if (e.key === "ArrowLeft") {
+    else if (e.key === "ArrowLeft") {
         vx = vx - 10;
     }
-    if (e.key === "ArrowRight") {
+    else if (e.key === "ArrowRight") {
         vx = vx + 10;
 }
 

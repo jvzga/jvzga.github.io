@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Gamedev Canvas Workshop - lesson 4: paddle and keyboard controls</title>
+    <title>Gamedev Canvas Workshop - lesson 5: game over</title>
     <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
 </head>
 <body>
@@ -22,12 +22,6 @@
     var paddleX = (canvas.width-paddleWidth)/2;
     var rightPressed = false;
     var leftPressed = false;
-    const paddleHeight = 10;
-    const paddleWidth = 75;
-    let paddleX = (canvas.width-paddleWidth) / 2;
-    let rightPressed = false;
-    let leftPressed = false;
-    let interval = 0;
 
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
@@ -72,18 +66,20 @@
         if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
             dx = -dx;
         }
-        if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+        if(y + dy < ballRadius) {
             dy = -dy;
         }
-        else if (y + dy > canvas.height-ballRadius-paddleHeight) {
-             if(x > paddleX && x < paddleX + paddleWidth) {
+        else if(y + dy > canvas.height-ballRadius) {
+            if(x > paddleX && x < paddleX + paddleWidth) {
                 dy = -dy;
             }
-        } else {
-            alert("GAME OVER"); 
-            document.location.reload();
-             clearInterval(interval);
+            else {
+                clearInterval(game);
+                alert("GAME OVER");
+                document.location.reload();
+            }
         }
+
         if(rightPressed && paddleX < canvas.width-paddleWidth) {
             paddleX += 7;
         }
@@ -95,9 +91,7 @@
         y += dy;
     }
 
-    interval = setInterval(draw, 10);
-    document.addEventListener("keydown", keyDownHandler, false);
-    document.addEventListener("keyup", keyUpHandler, false);
+    var game = setInterval(draw, 10);
 </script>
 
 </body>

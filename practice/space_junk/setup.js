@@ -56,3 +56,26 @@ function moveJunk(){
         j.y += j.dy;
     });
 }
+
+function drawShipsAndJunk(){
+    ships.forEach(ship => {
+        if (ship.alive){
+            drawShip(ship.x, ship.y, ship.angle + Math.PI/2, ship.size);
+        }
+    });
+    
+    junk.forEach(j => {
+        if(j.alive){
+            drawJunk(j.x, j.y, j.rotation, j.size);
+        }
+    });
+}
+
+//press p to pause
+function handleKeyDown(e){
+    if(e.key === 'p' || e.key === 'P') {
+        gameRunning = !gameRunning;
+    }
+}
+
+document.addEventListener('keydown', handleKeyDown);
